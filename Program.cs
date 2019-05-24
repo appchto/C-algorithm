@@ -18,12 +18,16 @@ namespace ConsoleAppTest
         private static void Main(string[] args)
         {
             List<Link> lstOfLinks = new List<Link>();
-            var webpageUrl = "https://github.com/appchto";
-            string targetDomain = "github.com";
+            //var webpageUrl = "https://github.com/appchto";
+            //string targetDomain = "github.com";
 
+            var webpageUrl = "https://statsroyale.com/top/clans";
+            string targetDomain = "statsroyale.com";
+
+            
             ExtractLinks(lstOfLinks, webpageUrl, targetDomain);
             FormatLinkToShow(lstOfLinks);
-
+            FormatToListLinksByComma(lstOfLinks);
             Console.ReadLine();
 
         }
@@ -53,7 +57,16 @@ namespace ConsoleAppTest
                 Console.WriteLine(show);
             }
         }
-
+        private static void FormatToListLinksByComma(List<Link> lstOfLinks)
+        {
+            Console.WriteLine("************lstOfLinks***********");
+            foreach (var link in lstOfLinks)
+            {
+                var li = link.link;
+                var show = string.Format("{0},",  li);
+                Console.WriteLine(show);
+            }
+        }
         private static void AddLinksToObjct(List<Link> lstOfLinks, AnchorTag link)
         {
             var l = new Link();
